@@ -16,7 +16,7 @@
   <summary><h3>Table of Contents</h3></summary>
   <ol>
     <li>
-      <a href="#about-k-quicksight">About Sala</a>
+      <a href="https://sala-final.vercel.app/about-us">About Sala</a>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -51,16 +51,16 @@
    ```sh
    git clone https://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@github.com/sunlyhuor/sala_final.git
    ```
-2. Install NPM packages
+2. Install NPM packages(Optional)
    ```sh
    npm install
    ```
-3. Starting a Development Server
+3. Start tailwindcss (Optional)
    ```sh
-   npm start
+   npm run dev
    ```
    
-Open [http://localhost:5500/src/pages/home.html](http://localhost:5500/src/pages/home.html) with your browser to see the result.
+Open [https://sala-final.vercel.app/](https://sala-final.vercel.app/) with your browser to see the result.
 
 ### Deployment
 
@@ -75,21 +75,21 @@ Deployment: #
 
 ## Global Pages (Not sign in)
 
-01. [Home](https://k-quicksight-4gmo.vercel.app/) : /
-02. [Sign in](https://k-quicksight-4gmo.vercel.app/auth/login) : /auth/login
-03. [Sign up](https://k-quicksight-4gmo.vercel.app/auth/signup) : /auth/sign up
-04. [ស្វែងរក](https://k-quicksight-4gmo.vercel.app/search) : /search
-05. [សាលារៀន](https://k-quicksight-4gmo.vercel.app/friends) : /សាលារៀន
-06. [បណ្ណាល័យ](https://k-quicksight-4gmo.vercel.app/create) : /បណ្ណាល័យ
-07. [មេរៀន](https://k-quicksight-4gmo.vercel.app/friends) : /មេរៀន
-08. [អត្ថបទ](https://k-quicksight-4gmo.vercel.app/about-us) : /អត្ថបទ
-09. [អំពីយើង](https://k-quicksight-4gmo.vercel.app/setting) : /អំពីយើង
+01. [Home](https://sala-final.vercel.app/) : /
+02. [Sign in](https://sala-final.vercel.app/login.html) : /auth/login
+03. [Sign up](https://sala-final.vercel.app/signup.html) : /auth/sign up
+<!-- 04. [ស្វែងរក]() : /search -->
+05. [សាលារៀន](https://sala-final.vercel.app/school.html) : /សាលារៀន
+06. [បណ្ណាល័យ](https://sala-final.vercel.app/book) : /បណ្ណាល័យ
+07. [មេរៀន](https://sala-final.vercel.app/course) : /មេរៀន
+08. [អត្ថបទ](https://sala-final.vercel.app/blog) : /អត្ថបទ
+09. [អំពីយើង](https://sala-final.vercel.app/about-us.html) : /អំពីយើង
 
 ## User board Pages (Signed in)
 
-1. [Profile](https://k-quicksight-4gmo.vercel.app/profile) : /profile
-2. [កំណត់](https://k-quicksight-4gmo.vercel.app/board/dataset) : /កំណត់
-3. [បញ្ជូលមាតិកា](https://k-quicksight-4gmo.vercel.app/board/dataset/${data-set-uuid}) : /បញ្ជូលមាតិកា
-4. [មើលមាតិកាទាំងអស់](https://k-quicksight-4gmo.vercel.app/board/shareWithMe) : /មើលមាតិកាទាំងអស់
-5. [Favortie](https://k-quicksight-4gmo.vercel.app/board/analysis) : /Favortie
+1. [Profile](https://sala-final.vercel.app/profile.html) : /profile
+<!-- 2. [កំណត់](https://k-quicksight-4gmo.vercel.app/board/dataset) : /កំណត់ -->
+3. [បញ្ជូលមាតិកា](https://sala-final.vercel.app/blog/upload-blog.html) : /បញ្ជូលមាតិកា
+4. [មើលមាតិកាទាំងអស់](https://sala-final.vercel.app/) : /មើលមាតិកាទាំងអស់
+5. [Favortie](https://sala-final.vercel.app/favorite.html) : /Favortie
 
