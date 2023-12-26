@@ -33,7 +33,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About Sala
- <a href="#">![Home - logged in](https://github.com/FoundationScholarship/social-media-clone/assets/69746654/c8497af7-c99d-44be-8b54-da1bb518bbd6)
+ <a href="#">![Home - logged in](https://cms.istad.co/uploads/large_homescreen_db1e847514.png)
  </a>
 <br/>
 <br />
