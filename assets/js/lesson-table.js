@@ -65,9 +65,7 @@
 // })
 
 const url1='https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=UU1VDpWpOf36CuP9fowyDZtQ&key=AIzaSyD5vvPK3F3OnV3z9x0alk2HtTi8UdknbXM';
-const url3=' ';
 const tab1=document.getElementById('tabs1');
-const tab3=document.getElementById('tab3');
 let output =' ';
 const recderTable=(posts)=>{
     posts.map((post)=>{
