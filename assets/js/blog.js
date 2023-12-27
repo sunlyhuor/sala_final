@@ -15,7 +15,7 @@ const Blockrender = (posts) => {
           post.attributes.thumbnail?.data?.attributes?.url
         }" alt="">
         <div class="flex flex-col justify-between p-3 leading-relaxed">
-        <p class="w-36 overflow-hidden rounded-full text-primary bg-secondary text-center px-2 py-1 md:px-4 md:py-2"> ${
+        <p class="w-36 overflow-hidden rounded-full text-primary bg-secondary text-center px-1 py-1 md:px-2 md:py-1"> ${
           post.attributes.tag.data.attributes.name
         } </p>
         <h1 class="text-xl mt-3 w-full desTwoLine desc">${

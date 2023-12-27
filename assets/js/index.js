@@ -13,13 +13,13 @@ const popularBlogRender = (cards) =>{
         display += `
             <a href="/blog/view.html?id=${card.id}" class="flex flex-col items-center bg-white rounded-lg lg:flex-row lg:max-w-2xl hover:bg-gray-100">
                 <img class="object-cover w-full h-full rounded-t-lg md:h-full md:w-full lg:h-full lg:w-48 lg:rounded-none lg:rounded-s-lg" src="https://cms.istad.co${card.attributes.thumbnail?.data?.attributes?.url}" alt="">
-                <div class="flex flex-col justify-between p-3 leading-relaxed">
-                <p class="w-36 overflow-hidden rounded-full text-primary bg-secondary text-center px-2 py-1 md:px-4 md:py-2"> ${ card.attributes.tag.data.attributes.name } </p>
-                <h1 class="text-xl mt-3 w-full desTwoLine">${card.attributes.title}</h1>
-                <h2 class="minititle desTwoLine text-des">${card.attributes.content}</h2>
-                <span class="text-body text-gray-400"><i class="fa-regular fa-calendar-days"></i>
-                    ${ new Date(card.attributes.createdAt).toDateString() } - ចំនួនដង៖ ${card.attributes.view}
-                </span>
+                <div class="flex flex-col justify-between p-4 leading-relaxed">
+                  <p class="w-36 overflow-hidden rounded-full text-primary bg-secondary text-center px-1 py-1 md:px-2 md:py-1"> ${ card.attributes.tag.data.attributes.name } </p>
+                  <h1 class="text-xl mt-3 w-full desTwoLine">${card.attributes.title}</h1>
+                  <h2 class="minititle desTwoLine text-des">${card.attributes.content}</h2>
+                  <span class="text-body text-gray-400"><i class="fa-regular fa-calendar-days"></i>
+                      ${ new Date(card.attributes.createdAt).toDateString() } - ចំនួនដង៖ ${card.attributes.view}
+                  </span>
                 </div>
             </a>
         `;
@@ -118,14 +118,15 @@ function returnLessonCard({thumbnailUrl,channelTitle,publishedAt,title, id}){
     <div class ="h-40" >
     <a href="/course/view.html?id=${id}">
       <img class="rounded-t-lg object-contain h-full w-full " src="${thumbnailUrl}" alt="thumbnail"> 
-    </a>
-    </div>
-    <div class="relUtube">
+      <div class="relUtube">
       <i class="fa-solid fa-play w-9 h-9 bg-red-600 flex justify-center items-center rounded-full" style="color: #ffffff;"></i>
     </div>
+    </a>
+    </div>
+    
     <div class="container flex items-end justify-between  text-xs rel px-3">
       <p class="py-1 px-2 bg-background rounded-lg bg-opacity-75 ">10 នាទី</p>
-      <p class="py-1 px-2  bg-background rounded-lg bg-opacity-75">អ្នកមើល ​១០ពាន់ នាក់</p>
+      <p class="py-1 px-2  bg-background rounded-lg bg-opacity-75"><i class="fa-solid fa-eye"></i> ​១០ពាន់ នាក់</p>
     </div>
     <div class="p-5 mt-10"> 
       <!-- profile -->
