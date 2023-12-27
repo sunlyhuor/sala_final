@@ -1,8 +1,10 @@
 const url3 = "https://cms.istad.co/api/sala-blogs?populate=%2A";
 const tabs3 = document.getElementById("tabs3");
 let blog = " ";
+
 //GET tab3
 const renderTable3 = (dis) => {
+  blog = ""
   dis.map((display) => {
     blog += `
         <tr>
@@ -32,9 +34,9 @@ const renderTable3 = (dis) => {
             </td>
             <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
                  <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                <a href="#" class="ml-2 text-red-600 hover:text-red-900" onclick="deleteBlog(${
+                <button class="ml-2 text-red-600 hover:text-red-900" onclick="deleteBlog(${
                   display.id
-                })">Delete</a>
+                })">Delete</button>
             </td>
         </tr>
         `;
@@ -57,7 +59,8 @@ const deleteBlog = (blogId) => {
         // Handle the response or update the UI as needed
         console.log("Blog deleted successfully:", resp);
         // You may want to re-fetch the data and render the updated table
-        renderTable3(resp); // Add this function to re-fetch and render the updated data
+        fetchData()
+        // renderTable3(resp); // Add this function to re-fetch and render the updated data
       })
       .catch((error) => {
         console.error("Error deleting blog:", error);
@@ -65,10 +68,15 @@ const deleteBlog = (blogId) => {
   }
 };  
 
-fetch(url3)
+function fetchData(){
+  fetch(url3)
   .then((res) => res.json())
   .then((resp) => {
     let results = resp.data;
     renderTable3(results);
     console.log(results);
   });
+}
+
+fetchData()
+
