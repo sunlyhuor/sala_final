@@ -12,7 +12,7 @@ const popularBlogRender = (cards) =>{
         // console.log(card)
         display += `
             <a href="/blog/view.html?id=${card.id}" class="flex flex-col items-center bg-white rounded-lg lg:flex-row lg:max-w-2xl hover:bg-gray-100">
-                <img class="object-cover w-full h-full rounded-t-lg md:h-full md:w-full lg:h-full lg:w-48 lg:rounded-none lg:rounded-s-lg" src="https://cms.istad.co${card.attributes.thumbnail?.data?.attributes?.url}" alt="">
+                <img class="object-contain w-full h-full rounded-t-lg md:h-full md:w-full lg:h-full lg:w-48 lg:rounded-none lg:rounded-s-lg" src="https://cms.istad.co${card.attributes.thumbnail?.data?.attributes?.url}" alt="">
                 <div class="flex flex-col justify-between p-4 leading-relaxed">
                   <p class="w-36 overflow-hidden rounded-full text-primary bg-secondary text-center px-1 py-1 md:px-2 md:py-1"> ${ card.attributes.tag.data.attributes.name } </p>
                   <h1 class="text-xl mt-3 w-full desTwoLine">${card.attributes.title}</h1>
@@ -41,7 +41,7 @@ function returnCard({profile,name,email,address,phoneNumber,facebookUrl,linkedIn
     return `
     <div class="flex bg-white rounded-lg md:flex-row md:max-w-2xl hover:bg-gray-100 ease-in duration-300 shadow-sm">
     <a href="/profile.html" class="flex p-3">
-      <img class="object-cover w-[8rem] h-full md:h-full md:w-[10rem] md:rounded-none rounded-s-lg md:rounded-s-lg" src="https://cms.istad.co${profile}" alt="${profile}">
+      <img class="object-contain w-[8rem] h-full md:h-full md:w-[10rem] md:rounded-none rounded-s-lg md:rounded-s-lg" src="https://cms.istad.co${profile}" alt="${profile}">
       <div class="flex flex-col ps-3" style="width:50%">
           <a href="/profile.html" class="mb-2">
             <h1 class="text-xl desTwoLine">${name}</h1>
@@ -186,7 +186,7 @@ function returnBookCard({thumbnailBook,title,des,profile,name,follower,createdAt
     <div class="max-w-sm bg-white rounded-lg">
    <div class = "h-40"> 
    <a href="/book/view.html">
-   <img class="rounded-t-lg  h-full w-full object-cover" src="https://cms.istad.co${thumbnailBook}" alt="">
+   <img class="rounded-t-lg  h-full w-full object-contain" src="https://cms.istad.co${thumbnailBook}" alt="">
  </a>
    </div>
     <div class="p-5">
