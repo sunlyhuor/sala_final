@@ -18,22 +18,22 @@ showFooter.innerHTML = `
       <h2 class="mb-6 text-sm font-semibold text-Onprimary uppercase">Learn More</h2>
       <ul class="text-white font-body">
           <li class="mb-4">
-              <a href="school.html" class=" hover:underline">សាលារៀន</a>
+              <a href="/school.html" class=" hover:underline">សាលារៀន</a>
           </li>
           <li class="mb-4">
-              <a href="book/index.html" class="hover:underline">បណ្ណាល័យ</a>
+              <a href="/book/index.html" class="hover:underline">បណ្ណាល័យ</a>
           </li>
           <li class="mb-4">
-              <a href="course/index.html" class="hover:underline">មេរៀន</a>
+              <a href="/course/index.html" class="hover:underline">មេរៀន</a>
           </li>
           <li class="mb-4">
-              <a href="blog/index.html" class="hover:underline">អត្ថបទ</a>
+              <a href="/blog/index.html" class="hover:underline">អត្ថបទ</a>
           </li>
           <li class="mb-4">
-            <a href="about-us.html" class="hover:underline">អំពីយើង</a>
+            <a href="/about-us.html" class="hover:underline">អំពីយើង</a>
           </li>
           <li class="mb-4">
-            <a href="FAQ.html" class="hover:underline">FAQs</a>
+            <a href="/FAQ.html" class="hover:underline">FAQs</a>
           </li>
       </ul>
     </div>
