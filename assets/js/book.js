@@ -33,11 +33,9 @@ const blockRender = (posts) => {
             <div class="text-center text-black text-xs font-light font-['Noto Serif Khmer'] tracking-tight ps-3"> <span id="follower">${post.attributes.follower} 
             </span>ពាន់នាក់ <span id="dateOnly">${dateOnly}</span> </div>
           </div>
-          <a href="#">
             <button id="addtoFav">
               <i class="fa-regular fa-heart text-2xl"></i>
             </button>
-          </a>
         </div>
       </div>
     </div>
