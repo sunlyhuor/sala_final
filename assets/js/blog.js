@@ -1,12 +1,13 @@
 "use strict";
-
 const blog = document.querySelector("#blog");
 let output = " ";
 const url = "https://cms.istad.co/api/sala-blogs?populate=thumbnail%2C%20tag";
 const Blockrender = (posts) => {
   posts.forEach((post) => {
+  
     // console.log(post.attributes.thumbnail);
-    output += `
+    if(post.attributes.tag.data.id == 4 ) {
+      output += `
         <div class="p-3 max-w-full flex shadow-sm">
         <a href="/blog/view.html?id=${
           post.id
@@ -33,12 +34,45 @@ const Blockrender = (posts) => {
     </a>
     </div>
         `;
+    }
   });
   blog.innerHTML = output;
 };
+
+const relateBlog = document.querySelector("#relateBlog");
+let result = " ";
+const blogRender = (items) => {
+  items.forEach((blogData) => {
+    console.log(blogData.attributes.thumbnail.data.attributes?.formats.thumbnail.url);
+    result += `
+    <div class="p-3">
+    <a href="/blog/view.html"
+        class="flex bg-white rounded-lg flex-col md:flex-row md:max-w-xl hover:bg-gray-100 ease-in duration-300 shadow-sm">
+        <img class="object-cover w-1/2 h-full md:h-[10rem] md:w-[12rem] lg:h-[6rem] lg:w-[3rem] md:rounded-none md:rounded-s-lg"
+            src= "https://cms.istad.co${blogData.attributes.thumbnail.data.attributes?.url}"  alt="">
+        <div class="flex flex-col p-2">
+            <h1 class="text-xl md:text-[0.5rem] lg:text-ms w-full desc ">${blogData.attributes.title}</h1>
+            <h2 class="minititle desc lg:text-sm"> ${blogData.attributes.content} </h2>
+            <span class="text-body text-gray-400 lg:text-sm"><i class="fa-regular fa-calendar-days"></i>  ${new Date(blogData.attributes.createdAt).toDateString() } - ចំនួនដង៖ ${blogData.attributes.view}ពាន់​​</span>
+        </div>
+    </a>
+</div>
+    </div>
+        `;
+  });
+  relateBlog.innerHTML = result;
+};
+
 fetch(url)
   .then((res) => res.json())
   .then((jsonResult) => {
     let result = jsonResult.data;
     Blockrender(result);
+  });
+
+  fetch(url)
+  .then((res) => res.json())
+  .then((jsonResult) => {
+    let result = jsonResult.data;
+    blogRender(result);
   });
