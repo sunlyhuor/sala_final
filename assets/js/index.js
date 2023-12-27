@@ -7,6 +7,68 @@ const urlBook = "https://cms.istad.co/api/sala-lessons?populate=thumbnail%2Cprof
 let display = ""
 let date= new Date().getDate;
 
+
+  // add to favourtite in localStorage 
+  $(document).on("click", "#addtoFav", function () {
+    console.log("Add to fav clicked");
+  
+    // Toggle the 'active' class
+     $(this).toggleClass("active");
+  
+    if ($(this).hasClass("active")) {
+      // Code to execute when the button is active (favorited)
+      $(this).html(`
+      <i class="fa-solid fa-heart text-2xl text-red-500"></i>
+      `);
+  
+      // Find the parent card element
+      const cardElement = $(this).closest('.max-w-sm');
+  
+      // Extract data from the card
+      const title= cardElement.find('#title').text().trim();
+      const imagePf = cardElement.find('#imageProfile').attr('src').trim();
+      const imageBook = cardElement.find('#imagesBook').attr('src').trim();
+      const about = cardElement.find('#about').text().trim();
+      const name = cardElement.find('#name').text().trim();
+      const follower = cardElement.find('#follower').text().trim();
+      const dateOnly = cardElement.find('#dateOnly').text().trim();
+     
+  
+      // Prepare the data to be stored in localStorage
+      const storeData = {
+        title,
+        imagePf,
+        imageBook,
+        about,
+        name,
+        follower,
+        dateOnly
+      };
+      console.log("Extracted Data:", storeData);
+  
+      // Store data in localStorage
+      const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      favorites.push(storeData);
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+  
+    } else {
+      // Code to execute when the button is not active (not favorited)
+      $(this).html(`
+      <i class="fa-regular fa-heart text-2xl"></i>
+      `);
+  
+      // Code to execute when the button is not active (not favorited)
+      try {
+        // Attempt to store data in localStorage
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+      } catch (e) {
+        // Handle the error (e.g., show a message to the user)
+        console.error("Error storing data in localStorage:", e);
+      }
+    }
+  });
+
+
 const popularBlogRender = (cards) =>{
     cards.forEach((card) => {
         // console.log(card)
@@ -186,20 +248,21 @@ function returnBookCard({thumbnailBook,title,des,profile,name,follower,createdAt
     <div class="max-w-sm bg-white rounded-lg">
    <div class = "h-40"> 
    <a href="/book/view.html">
-   <img class="rounded-t-lg  h-full w-full object-contain" src="https://cms.istad.co${thumbnailBook}" alt="">
+   <img class="rounded-t-lg h-full w-full object-contain" src="https://cms.istad.co${thumbnailBook}" alt="" id="imagesBook">
  </a>
    </div>
     <div class="p-5">
       <a href="/book/view.html">
-        <h5 class="mb-2 text-black text-2xl tracking-tight desTwoLine">${title}</h5>
+        <h5 class="mb-2 text-black text-2xl tracking-tight" id="title">${title}</h5>
       </a>
-      <p class="mb-3 text-black text-base tracking-tight text-des desTwoLine">${des}</p>
+      <p class="mb-3 text-black text-base tracking-tight text-des desc" id="about">${des}</p>
       <div class="flex items-center">
-        <img class="rounded-full w-9 h-9" src="https://cms.istad.co${profile}" alt="profile picture">
+        <img class="rounded-full w-9 h-9" src="https://cms.istad.co${profile}" alt="profile picture" id="imageProfile">
         <div class="w-full flex justify-between items-center">
-          <div class=" text-start text-black text-sm font-medium tracking-tight">
-            <div class="ps-3">${name}</div>
-            <div class="text-center text-black text-xs font-light tracking-tight ps-3">${follower} ពាន់នាក់ - ${createdAt}</div>
+          <div class=" text-start text-black text-sm font-medium font-['Noto Serif Khmer'] tracking-tight">
+            <div class="ps-3" id="name">${name}</div>
+            <div class="text-center text-black text-xs font-light font-['Noto Serif Khmer'] tracking-tight ps-3"> <span id="follower">${follower} 
+            </span>នាក់ <span id="dateOnly">${new Date( createdAt ).toDateString()}</span> </div>
           </div>
             <button id="addtoFav">
               <i class="fa-regular fa-heart text-2xl"></i>
@@ -237,24 +300,3 @@ $.ajax({
         console.log(error)
     }
 });
-
-$(document).on("click", "#addtoFav", function () {
-    // console.log("Add to fav clicked");
-    // Toggle the 'active' class
-    $(this).toggleClass("active");
-  
-    if ($(this).hasClass("active")) {
-      // Code to execute when the button is active (favorited)
-        $(this).html(`
-            <i class="fa-solid fa-heart text-2xl text-red-500"></i>
-        `);
-    
-    } else {
-        $(this).html(`
-            <i class="fa-regular fa-heart text-2xl"></i>
-        
-        `);
-    
-    }
-  });
-
