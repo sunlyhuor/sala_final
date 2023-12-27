@@ -3,18 +3,17 @@ const school=document.getElementById('school');
 const showLoading = document.getElementById("showLoading")
 const url= "https://cms.istad.co/api/sala-schools?populate=profile%2Ccover";
 let display= " ";
-
-
 //Get data from api
 const sala=(post)=>{
     post.forEach(ps=>{
         display+=`
         <div href="#" class="flex flex-col items-center bg-white rounded-lg lg:flex-row lg:max-w-2xl hover:bg-gray-100">
+        <a href="/profile.html">
         <img class="object-contain w-full h-full rounded-t-lg md:h-full md:w-full lg:h-full lg:w-48 lg:rounded-none lg:rounded-s-lg" src="https://cms.istad.co${ps.attributes.profile.data ?.attributes.url}" alt="">
         <div class="flex flex-col justify-between p-4 leading-normal">
-            <a href="/profile.html">
+            
                 <h5 class="mb-2 text-black text-2xl tracking-tight">${ps.attributes.name}</h5>
-            </a>
+          
             <div class="flex justify-start items-center gap-3 mb-3">
                 <i class="fa-solid fa-location-dot"></i>
                 <span>${ps.attributes.address}</span>
@@ -46,6 +45,7 @@ const sala=(post)=>{
 
             </div>
         </div>
+        </a>
     </div>
         `
     })

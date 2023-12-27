@@ -8,7 +8,7 @@ const Blockrender = (posts) => {
   posts.forEach((post) => {
   
     // console.log(post.attributes.thumbnail);
-    if(post.attributes.tag.data.id == 4 ) {
+    if(post.attributes.tag?.data?.id == 4 ) {
       output += `
         <div class="p-3 max-w-full flex shadow-sm">
         <a href="/blog/view.html?id=${
@@ -19,13 +19,13 @@ const Blockrender = (posts) => {
         }" alt="">
         <div class="flex flex-col justify-between p-3 leading-relaxed">
         <p class="w-32  overflow-hidden rounded-full text-sm text-primary bg-secondary text-center py-1"> ${
-          post.attributes.tag.data.attributes.name
+          post.attributes.tag.data?.attributes?.name
         } </p>
         <h1 class="text-xl mt-3 w-full desTwoLine desc">${
-          post.attributes.title
+          post.attributes?.title
         }</h1>
         <h2 class="minititle desTwoLine text-des desc">${
-          post.attributes.content
+          post.attributes?.content
         }</h2>
         <span class="text-body text-gray-400"><i class="fa-regular fa-calendar-days"></i>
             ${new Date(post.attributes.createdAt).toDateString()} - ចំនួនដង៖ ${
@@ -50,8 +50,8 @@ const blogRender = (items) => {
     <div class="p-3">
     <a href="/blog/view.html"
         class="flex bg-white rounded-lg flex-col md:flex-row md:max-w-xl hover:bg-gray-100 ease-in duration-300 shadow-sm">
-        <img class="object-cover w-full h-full md:h-[10rem] md:w-[12rem] lg:h-[6rem] lg:w-[3rem] md:rounded-none md:rounded-s-lg"
-            src= "https://cms.istad.co${blogData.attributes.thumbnail.data.attributes?.url}"  alt="">
+        <img class="object-cover w-full h-[8rem] md:h-[10rem] md:w-[12rem] lg:h-[6rem] lg:w-[3rem] md:rounded-none md:rounded-s-lg"
+            src= "https://cms.istad.co${blogData.attributes.thumbnail.data.attributes?.formats.thumbnail.url}"  alt="">
         <div class="flex flex-col p-2">
             <h1 class="text-xl md:text-[0.5rem] lg:text-ms w-full desc ">${blogData.attributes.title}</h1>
             <h2 class="minititle desc lg:text-sm"> ${blogData.attributes.content} </h2>

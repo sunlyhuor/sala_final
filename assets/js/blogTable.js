@@ -2,9 +2,18 @@ const url3 = "https://cms.istad.co/api/sala-blogs?populate=%2A";
 const tabs3 = document.getElementById("tabs3");
 let blog = " ";
 
+function fetchData(){
+  fetch(url3)
+  .then((res) => res.json())
+  .then((resp) => {
+    let results = resp.data;
+    renderTable3(results);
+    console.log(results);
+  });
+}
 //GET tab3
 const renderTable3 = (dis) => {
-  blog = ""
+  blog = " "
   dis.map((display) => {
     blog += `
         <tr>
@@ -67,16 +76,6 @@ const deleteBlog = (blogId) => {
       });
   }
 };  
-
-function fetchData(){
-  fetch(url3)
-  .then((res) => res.json())
-  .then((resp) => {
-    let results = resp.data;
-    renderTable3(results);
-    console.log(results);
-  });
-}
-
 fetchData()
+
 

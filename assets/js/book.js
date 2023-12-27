@@ -31,7 +31,7 @@ const blockRender = (posts) => {
           <div class=" text-start text-black text-sm font-medium font-['Noto Serif Khmer'] tracking-tight">
             <div class="ps-3" id="name">${post.attributes.name}</div>
             <div class="text-center text-black text-xs font-light font-['Noto Serif Khmer'] tracking-tight ps-3"> <span id="follower">${post.attributes.follower} 
-            </span>ពាន់នាក់ <span id="dateOnly">${dateOnly}</span> </div>
+            </span>នាក់ <span id="dateOnly">${dateOnly}</span> </div>
           </div>
           <a href="#">
             <button id="addtoFav">
