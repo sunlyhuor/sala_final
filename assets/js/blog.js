@@ -1,6 +1,8 @@
 "use strict";
 
 const blog = document.querySelector("#blog");
+const showLoading = document.getElementById("showLoading")
+
 let output = " ";
 const url = "https://cms.istad.co/api/sala-blogs?populate=thumbnail%2C%20tag";
 const Blockrender = (posts) => {
@@ -15,7 +17,7 @@ const Blockrender = (posts) => {
           post.attributes.thumbnail?.data?.attributes?.url
         }" alt="">
         <div class="flex flex-col justify-between p-3 leading-relaxed">
-        <p class="w-36 overflow-hidden rounded-full text-primary bg-secondary text-center px-2 py-1 md:px-4 md:py-2"> ${
+        <p class="w-32  overflow-hidden rounded-full text-sm text-primary bg-secondary text-center py-1"> ${
           post.attributes.tag.data.attributes.name
         } </p>
         <h1 class="text-xl mt-3 w-full desTwoLine desc">${
@@ -36,9 +38,11 @@ const Blockrender = (posts) => {
   });
   blog.innerHTML = output;
 };
+showLoading.innerHTML = loading
 fetch(url)
   .then((res) => res.json())
   .then((jsonResult) => {
+    showLoading.style.display = "none"
     let result = jsonResult.data;
     Blockrender(result);
   });

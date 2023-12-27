@@ -1,5 +1,7 @@
 'use strict'
 const blog = document.getElementById("lesson");
+const showLoading = document.getElementById("showLoading")
+
 let output = "";
 const url = "https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=UU1VDpWpOf36CuP9fowyDZtQ&key=AIzaSyD5vvPK3F3OnV3z9x0alk2HtTi8UdknbXM";
 let date= new Date().getDate    ;
@@ -48,9 +50,11 @@ const blockRender = (posts) => {
   });
   blog.innerHTML = output;
 };
+showLoading.innerHTML = loading
 fetch(url)
   .then((res) => res.json())
   .then((jsonResult) => {
+    showLoading.style.display = "none"
     let result = jsonResult.items;
    blockRender(result);
   });
