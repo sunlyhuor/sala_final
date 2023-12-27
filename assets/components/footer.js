@@ -10,7 +10,7 @@ showFooter.innerHTML = `
           <h2 class="text-nav text-Onprimary uppercase">sala</h2>
         </a>
         <h2 class="mt-2 text-body text-white">
-          A plateform for our future with many resources to explore. 
+          A platform for our future with many resources to explore. 
         </h2>
         
     </div>
