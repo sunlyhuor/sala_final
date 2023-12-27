@@ -51,7 +51,7 @@ const blogRender = (items) => {
     <a href="/blog/view.html"
         class="flex bg-white rounded-lg flex-col md:flex-row md:max-w-xl hover:bg-gray-100 ease-in duration-300 shadow-sm">
         <img class="object-cover w-full h-[8rem] md:h-[10rem] md:w-[12rem] lg:h-[6rem] lg:w-[3rem] md:rounded-none md:rounded-s-lg"
-            src= "https://cms.istad.co${blogData.attributes.thumbnail.data.attributes?.formats.thumbnail.url}"  alt="">
+            src= "https://cms.istad.co${blogData.attributes.thumbnail.data.attributes?.url}"  alt="">
         <div class="flex flex-col p-2">
             <h1 class="text-xl md:text-[0.5rem] lg:text-ms w-full desc ">${blogData.attributes.title}</h1>
             <h2 class="minititle desc lg:text-sm"> ${blogData.attributes.content} </h2>
