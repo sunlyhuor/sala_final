@@ -1,5 +1,7 @@
 'use strict'
 const blog = document.getElementById("lesson");
+const showLoading = document.getElementById("showLoading")
+
 let output = "";
 const url = "https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=UU1VDpWpOf36CuP9fowyDZtQ&key=AIzaSyD5vvPK3F3OnV3z9x0alk2HtTi8UdknbXM";
 let date= new Date().getDate    ;
@@ -11,15 +13,16 @@ const blockRender = (posts) => {
     <div class="max-w-sm bg-white rounded-lg relative">
     <div class ="h-40" >
     <a href="/course/view.html?id=${post.id}">
-      <img class="rounded-t-lg object-contain h-full w-full " src=" ${thumbnailUrl}" alt="thumbnail"> 
+      <img class="rounded-t-lg object-contain h-full w-full " src=" ${thumbnailUrl}" alt="thumbnail">
+      <div class="relUtube">
+      <i class="fa-solid fa-play w-9 h-9 bg-red-600 flex justify-center items-center rounded-full" style="color: #ffffff;"></i>
+    </div> 
     </a>
     </div>
-    <div class="relUtube">
-      <i class="fa-solid fa-play w-9 h-9 bg-red-600 flex justify-center items-center rounded-full" style="color: #ffffff;"></i>
-    </div>
+    
     <div class="container flex items-end justify-between  text-xs rel px-3">
       <p class="py-1 px-2 bg-background rounded-lg bg-opacity-75 ">10 នាទី</p>
-      <p class="py-1 px-2  bg-background rounded-lg bg-opacity-75">អ្នកមើល ​១០ពាន់ នាក់</p>
+      <p class="py-1 px-2  bg-background rounded-lg bg-opacity-75"><i class="fa-solid fa-eye"></i> ​១០ពាន់ នាក់</p>
     </div>
     <div class="p-5 mt-10"> 
       <!-- profile -->
@@ -34,7 +37,7 @@ const blockRender = (posts) => {
                 ${post.snippet.channelTitle}
             </p>
             <p class="text-xs text-des truncate">
-                ១០០ពាន់ នាក់ ${post.snippet.publishedAt}
+            <i class="fa-regular fa-calendar-days"></i> ${ new Date(post.snippet.publishedAt).toDateString()} 
             </p>
         </div>
     </div>
@@ -48,9 +51,11 @@ const blockRender = (posts) => {
   });
   blog.innerHTML = output;
 };
+showLoading.innerHTML = loading
 fetch(url)
   .then((res) => res.json())
   .then((jsonResult) => {
+    showLoading.style.display = "none"
     let result = jsonResult.items;
    blockRender(result);
   });

@@ -80,7 +80,7 @@ const renderAboutCourse = (courseItem) => {
     if (items.id == getQueryParams().id) {
       result += `
       <p class="text-des pt-5"><strong>ការពិពណ៌នា</strong></p>
-      <p class="text-sm text-des">${items.snippet.description}</p>
+      <p class="text-sm text-des desc">${items.snippet.description}</p>
       <p class="text-sm pt-5 text-des"><br>
         ${new Date (items.snippet.publishedAt).toDateString()} <br>
         <strong>${items.snippet.videoOwnerChannelTitle}</strong> <br>

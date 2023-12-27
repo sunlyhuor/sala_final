@@ -24,8 +24,8 @@
 </style>
 <body class="bg-background font-NotoSerifKhmer">
     <!-- Header -->
-    <header>
-      <nav class="bg-primary border-gray-200 lg:text-Onprimary font-NotoSerifKhmer w-full sticky top-0 left-0 z-50">
+    <header style="position: sticky;top: 0px; z-index: 1000;">
+      <nav class="bg-primary border-gray-200 lg:text-Onprimary font-NotoSerifKhmer w-full">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3 w-full">
     
             <section class="flex items-center gap-5">
@@ -358,7 +358,7 @@
     <!-- End Header -->
 
     <main>
-      <section class="mt-[120px] mx-auto w-full max-w-screen-xl flex">
+      <section class="lg:mt-[50px] mt-[20px] mx-auto w-full max-w-screen-xl flex">
           <div class="flex gap-5 px-3 md:px-5 lg:px-0">
                     <!-- Search Bar​ -->
                   <div id="mainSearchBar" class="relative">
@@ -410,8 +410,9 @@
       <!--Add Book card-->
       <section class="mt-top-title mx-auto w-full max-w-screen-xl">
         <h1 class="text-nav mx-[1.5rem] md:mx-[1.5rem] ">មេរៀន</h1>
-        <div id="book" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 p-5">  
-        </div>
+        <section id="book" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 p-5">  
+        </section>
+        <div id="showLoading" ></div>
         <!-- pagination -->
         <section class="mx-auto w-full max-w-screen-xl p-5 flex justify-end">
           <nav aria-label="Page navigation example" class="pb-2">
@@ -448,6 +449,7 @@
     <div id="showFooter"></div>
   <!-- End Footer-->
 </body>
+<script src="/assets/components/loading.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
 <script src="/assets/js/nav.js" ></script>
 <script src="/assets/js/book.js"></script>

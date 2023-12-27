@@ -2,6 +2,7 @@
 'use strict'
 const blog = document.getElementById("book");
 let output = "";
+const showLoading = document.getElementById("showLoading")
 const url = "https://cms.istad.co/api/sala-lessons?populate=thumbnail%2Cprofile";
 
 const blockRender = (posts) => {
@@ -45,9 +46,12 @@ const blockRender = (posts) => {
   });
   blog.innerHTML = output;
 };
+
+showLoading.innerHTML = loading
 fetch(url)
   .then((res) => res.json())
   .then((jsonResult) => {
+    showLoading.style.display = "none"
     let result = jsonResult.data;
     blockRender(result);
   });

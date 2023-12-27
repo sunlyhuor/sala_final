@@ -1,5 +1,6 @@
 
 const school=document.getElementById('school');
+const showLoading = document.getElementById("showLoading")
 const url= "https://cms.istad.co/api/sala-schools?populate=profile%2Ccover";
 let display= " ";
 
@@ -48,8 +49,8 @@ const sala=(post)=>{
     </div>
         `
     })
-
-    school.innerHTML=display;
+    showLoading.style.display = "none"
+    school.innerHTML = display;
 }
  const requestOptions = {
     method: 'GET',
@@ -57,9 +58,13 @@ const sala=(post)=>{
     redirect: 'follow'
   };
 
+showLoading.innerHTML = loading
 fetch(url,requestOptions)
-.then(res=>res.json())
+.then(res=> {
+        return res.json()
+    }
+)
 .then((salaresult)=>{
-  sala(salaresult.data)
+    sala(salaresult.data)
 })
 
