@@ -1,8 +1,22 @@
 const url2 = "https://cms.istad.co/api/sala-lessons?populate=thumbnail";
 const tab2 = document.getElementById("tabs2");
 let display = " ";
+let results = "";
+
+//Get Datas
+function fetchLibray(){
+  results = ""
+  fetch(url2)
+  .then((res) => res.json())
+  .then((resp) => {
+    results = resp.data;
+    renderTable2(results);
+  });
+}
+
 //GET tab2
 const renderTable2 = (dis) => {
+  display = ""
   dis.map((table) => {
     display += `
         <tr>
@@ -33,9 +47,9 @@ const renderTable2 = (dis) => {
             </td>
             <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
                  <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                <a href="#" class="ml-2 text-red-600 hover:text-red-900" onclick="deletebook(${
+                <button type="button" href="#" class="ml-2 text-red-600 hover:text-red-900" onclick="deletebook(${
                   table.id
-                })">Delete</a>
+                })">Delete</button>
             </td>
         </tr>
         `;
@@ -57,7 +71,9 @@ const deletebook = (bookId) => {
         // Handle the response or update the UI as needed
         console.log("Book deleted successfully:", result);
         // You may want to re-fetch the data and render the updated table
-        renderTable2(resp); // Add this function to re-fetch and render the updated data
+        fetchLibray()
+        
+        // renderTable2(resp); // Add this function to re-fetch and render the updated data
       })
       .catch((error) => {
         console.error("Error deleting book:", error);
@@ -65,9 +81,6 @@ const deletebook = (bookId) => {
   }
 };
 
-fetch(url2)
-  .then((res) => res.json())
-  .then((resp) => {
-    let results = resp.data;
-    renderTable2(results);
-  });
+
+fetchLibray()
+
