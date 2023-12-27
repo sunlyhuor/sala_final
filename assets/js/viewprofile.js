@@ -23,54 +23,42 @@ function getQueryParams() {
   
     return queryParams;
 }  
-    //Url
-    const url = "https://cms.istad.co/api/sala-schools/"
-    const recentUrl = "https://cms.istad.co/api/sala-schools?populate=profile%2Ccover"
-    // Example usage
-    const params = getQueryParams();
+const pro=document.querySelector('#profile');
+let dis=" " ;
+const url='https://cms.istad.co/api/sala-schools?populate=profile%2Ccover';
+const renderProfile=(profiles)=>{
+  profiles.map((posts)=>{
+    if(posts.id==getQueryParams().id){
+      dis+=`
+      <div class="w-full mx-auto" >
+      <img class="w-5/6 mx-auto rounded-lg relative" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZTJHXrWPaD9N6czL20wVyIsRUMDl7RZHdLVt6zMqWbnb-43zT1MP2O3dz2HNeVOKcgv8&usqp=CAU">
+      <img id="#textThumbnail" class="mx-32 top-12 absolute w-[130px] h-[130px] rounded-[140px] lg:mx-60 lg:mt-72 md:mt-36 " src="https://cms.istad.co${posts.attributes?.profile.data?.attributes?.url}" alt="">
+  </div>
+  <!--Info-->
+  <div class="mt-14 xl:mt-8 lg:mt-1 w-full text-center ">
+      <div class="lg:w-3/5 mx-32 lg:float-right lg:flex lg:justify-between md:block ">
+              <div class="lg:text-justify">
+                  <h3 id="textName" class="text-miniTitle w-full">${posts.attributes.name}</h3>
+                  <div class="xl:flex">
+                      <p class="mt-2 ">អ្នកតាមដាន</p>
+                      <p class="mt-2">1ពាន់ នាក់</p>
+                  </div>
+                  <p id="txtDes" class=" mt-2 text-center">${posts.attributes.description}</p>
   
-    // Access individual parameters
-    const id = params.id; // Single value or array of value
-
-    $.ajax({
-        type: "GET",
-        url: url + id + "?populate=profile",
-        // data: "data",
-        dataType: "json",
-        success: function (response) {
-            // console.log(response)
-            $("#textName").text( response.data.attributes.name )
-            $("#txtDes").text( response.data.attributes.description )
-            $("#textThumbnail").attr("src", "https://cms.istad.co" + response.data.attributes.profile.data.attributes.url )
-        }
-    });
-
-    function recentBlog( { id, name, address,e, phoneNumber,facebookUrl,profile} ){
-        return `
-       
-    
-    `
+              </div>
+              <div class="flex items-center justify-center text-Onprimary sm:my-4 sm:mx-4 ">
+                  <button type="button" class="bg-gray-900 rounded p-btn mt-2">តាមដាន</button>
+              </div>
+      </div>
+  </div>
+      `
     }
-
-    $.ajax({
-        type: "GET",
-        url: recentUrl,
-        // data: "data",   
-        dataType: "json",
-        success: function (response) {
-            let con = "";
-            response.data.map(data => {
-                if( data.id != id ){
-                    con += recentBlog( { 
-                        id: data.id,
-                        name: data.attributes.name,
-                        profile: data.attributes.profile.data?.attributes?.url 
-                    } )
-                }
-                
-            })
-            $("#profile").html( con )
-        }
-    });
-
-
+  })
+  pro.innerHTML=dis;
+}
+fetch(url)
+.then(res=>res.json())
+.then((ResProfile)=>{
+  let resutl=ResProfile.data;
+  renderProfile(resutl);
+})
