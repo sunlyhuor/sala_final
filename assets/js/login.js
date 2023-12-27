@@ -58,7 +58,7 @@ const apiLogin = "https://cms.istad.co/api/auth/local"
                     }
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
-                    console.log( thrownError)
+                    alert("Invalid credentials")
                 }
             });
         }  

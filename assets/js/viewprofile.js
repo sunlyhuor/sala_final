@@ -25,35 +25,33 @@ function getQueryParams() {
 }  
 const pro=document.querySelector('#profile');
 let dis=" " ;
-const url='https://cms.istad.co/api/sala-schools?populate=profile%2Ccover';
-const renderProfile=(profiles)=>{
-  profiles.map((posts)=>{
-    if(posts.id==getQueryParams().id){
+const url='https://cms.istad.co/api/sala-schools/' + getQueryParams().id + '?populate=profile%2Ccover';
+const renderProfile=(posts)=>{
       dis+=`
       <div class="w-full mx-auto" >
-      <img class="w-5/6 mx-auto rounded-lg relative" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZTJHXrWPaD9N6czL20wVyIsRUMDl7RZHdLVt6zMqWbnb-43zT1MP2O3dz2HNeVOKcgv8&usqp=CAU">
-      <img id="#textThumbnail" class="mx-32 top-12 absolute w-[130px] h-[130px] rounded-[140px] lg:mx-60 lg:mt-72 md:mt-36 " src="https://cms.istad.co${posts.attributes?.profile.data?.attributes?.url}" alt="">
-  </div>
-  <!--Info-->
-  <div class="mt-14 xl:mt-8 lg:mt-1 w-full text-center ">
-      <div class="lg:w-3/5 mx-32 lg:float-right lg:flex lg:justify-between md:block ">
-              <div class="lg:text-justify">
-                  <h3 id="textName" class="text-miniTitle w-full">${posts.attributes.name}</h3>
-                  <div class="xl:flex">
-                      <p class="mt-2 ">អ្នកតាមដាន</p>
-                      <p class="mt-2">1ពាន់ នាក់</p>
-                  </div>
-                  <p id="txtDes" class=" mt-2 text-center">${posts.attributes.description}</p>
-  
-              </div>
-              <div class="flex items-center justify-center text-Onprimary sm:my-4 sm:mx-4 ">
-                  <button type="button" class="bg-gray-900 rounded p-btn mt-2">តាមដាន</button>
-              </div>
+        <div class="relative bg-red-200" >
+          <img class="w-full rounded-lg relative" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZTJHXrWPaD9N6czL20wVyIsRUMDl7RZHdLVt6zMqWbnb-43zT1MP2O3dz2HNeVOKcgv8&usqp=CAU">
+          <img id="#textThumbnail" class="bottom-0 absolute left-8 w-[100px] h-[100px] rounded-[140px] " src="https://cms.istad.co${posts.attributes?.profile.data?.attributes?.url}" alt="">
+        </div>
       </div>
+      <!--Info-->
+      <div class="mt-14 xl:mt-8 lg:mt-1 w-full text-center ">
+          <div class="lg:w-3/5 mx-32 lg:float-right lg:flex lg:justify-between md:block ">
+                  <div class="lg:text-justify">
+                      <h3 id="textName" class="text-miniTitle w-full">${posts.attributes.name}</h3>
+                      <div class="xl:flex">
+                          <p class="mt-2 ">អ្នកតាមដាន</p>
+                          <p class="mt-2">1ពាន់ នាក់</p>
+                      </div>
+                      <p id="txtDes" class=" mt-2 text-center">${posts.attributes.description}</p>
+      
+                  </div>
+                  <div class="flex items-center justify-center text-Onprimary sm:my-4 sm:mx-4 ">
+                      <button type="button" class="bg-gray-900 rounded p-btn mt-2">តាមដាន</button>
+                  </div>
+          </div>
   </div>
       `
-    }
-  })
   pro.innerHTML=dis;
 }
 fetch(url)

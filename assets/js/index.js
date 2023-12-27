@@ -99,10 +99,10 @@ async function getData(){
 }
 getData()
 
-function returnCard({profile,name,email,address,phoneNumber,facebookUrl,linkedInUrl,telegramUrl,youtubeUrl}){
+function returnCard({profile,name,email,address,phoneNumber,facebookUrl,linkedInUrl,telegramUrl,youtubeUrl, id}){
     return `
     <div class="flex bg-white rounded-lg md:flex-row md:max-w-2xl hover:bg-gray-100 ease-in duration-300 shadow-sm">
-    <a href="/profile.html" class="flex p-3">
+    <a href="/profile.html?id=${id}" class="flex p-3">
       <img class="object-contain w-[8rem] h-full md:h-full md:w-[10rem] md:rounded-none rounded-s-lg md:rounded-s-lg" src="https://cms.istad.co${profile}" alt="${profile}">
       <div class="flex flex-col ps-3" style="width:50%">
           <a href="/profile.html" class="mb-2">
@@ -153,6 +153,7 @@ $.ajax({
         let cardDisplay = ""
         response.data.map(data =>{
             cardDisplay += returnCard( { 
+                id: data.id,
                 name: data.attributes.name,
                 email: data.attributes.e,
                 address: data.attributes.address,

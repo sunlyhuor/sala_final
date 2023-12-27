@@ -3,12 +3,12 @@ const blog = document.querySelector("#blog");
 const showLoading = document.getElementById("showLoading")
 
 let output = " ";
-const url = "https://cms.istad.co/api/sala-blogs?populate=thumbnail%2C%20tag";
+const blogUrl = "https://cms.istad.co/api/sala-blogs?pagination%5BwithCount%5D=false&populate=thumbnail%2Ctag";
+const blogRecentUrl = "https://cms.istad.co/api/sala-blogs?pagination%5BwithCount%5D=true&pagination%5Blimit%5D=4&populate=thumbnail%2Ctag";
 const Blockrender = (posts) => {
   posts.forEach((post) => {
   
     // console.log(post.attributes.thumbnail);
-    if(post.attributes.tag?.data?.id == 4 ) {
       output += `
         <div class="p-3 max-w-full flex shadow-sm">
         <a href="/blog/view.html?id=${
@@ -36,7 +36,6 @@ const Blockrender = (posts) => {
     </a>
     </div>
         `;
-    }
   });
   blog.innerHTML = output;
 };
@@ -65,7 +64,7 @@ const blogRender = (items) => {
   relateBlog.innerHTML = result;
 };
 
-fetch(url)
+fetch(blogUrl)
   .then((res) => res.json())
   .then((jsonResult) => {
     showLoading.style.display = "none"
@@ -73,7 +72,7 @@ fetch(url)
     Blockrender(result);
   });
 
-  fetch(url)
+  fetch(blogRecentUrl)
   .then((res) => res.json())
   .then((jsonResult) => {
     let result = jsonResult.data;

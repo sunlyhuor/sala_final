@@ -95,11 +95,13 @@ btnSubmit.addEventListener("click", async function (e) {
       .then((response) => response.json())
       .then((result) => {
         result.data;
-        window.location.reload();
+        alert("Creatd Successfuly")
+        window.location.reload()
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) =>  alert("Creatd Failed"))
+
   })
-  .catch((error) => console.log("error", error));
+  .catch((error) => alert("Creatd Failed") )
 
 
 });
